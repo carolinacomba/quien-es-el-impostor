@@ -136,6 +136,8 @@ export class App {
   currentPlayerReviewing: Player | null = null;
   isRevealingSecret = false;
   hasRevealedSecretOnce = false;
+  // Reveal countdown (seconds)
+  revealCountdown = signal<number>(0);
 
   // --- COMPUTED ---
   maxImpostors = computed(() => {
@@ -309,6 +311,22 @@ export class App {
     });
 
     this.gameState.set('RESULTS');
+  }
+
+  startRevealCountdown() {
+    if (this.revealCountdown() > 0) return; // already counting
+    let n = 3;
+    this.revealCountdown.set(n);
+    const id = setInterval(() => {
+      n -= 1;
+      if (n <= 0) {
+        clearInterval(id as any);
+        this.revealCountdown.set(0);
+        this.revealResults();
+      } else {
+        this.revealCountdown.set(n);
+      }
+    }, 1000);
   }
 
   resetGame() {
