@@ -1,3 +1,10 @@
+:host {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
 .animate-fade-in {
   animation: fadeIn 0.4s ease-out;
 }
