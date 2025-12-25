@@ -161,6 +161,13 @@ export class App {
     // Devolver ordenados por nombre para que sea más fácil encontrarse
     this.players.set(currentPlayers.sort((a, b) => a.name.localeCompare(b.name)));
     
+    // Track start of game (no secret word sent)
+    this.trackEvent('start_game', {
+      playerCount: this.players().length,
+      impostorCount: this.impostorCount(),
+      category: this.currentCategory(),
+    });
+
     this.gameState.set('REVEAL_PHASE');
   }
 
@@ -213,10 +220,20 @@ export class App {
   }
 
   revealResults() {
+    // Track when results are revealed
+    this.trackEvent('view_results', {
+      playerCount: this.players().length,
+      impostors: this.impostorsList().map(p => p.name),
+      category: this.currentCategory(),
+    });
+
     this.gameState.set('RESULTS');
   }
 
   resetGame() {
+    // Track reset action
+    this.trackEvent('reset_game', { playerCount: this.players().length });
+
     // Volver al setup pero manteniendo jugadores
     const resetPlayers = this.players().map(p => ({
       ...p,
@@ -225,5 +242,16 @@ export class App {
     }));
     this.players.set(resetPlayers);
     this.gameState.set('SETUP');
+  }
+
+  // --- Analytics helper ---
+  trackEvent(name: string, details: Record<string, any> = {}) {
+    try {
+      const w = window as any;
+      w.dataLayer = w.dataLayer || [];
+      w.dataLayer.push({ event: name, ...details });
+    } catch (e) {
+      // ignore in non-browser environments
+    }
   }
 }
