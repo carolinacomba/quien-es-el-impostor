@@ -166,11 +166,13 @@ export class App {
   }
 
   addPlayer() {
-    const name = this.newPlayerName.trim();
-    if (!name) return;
+    const raw = this.newPlayerName.trim();
+    if (!raw) return;
 
-    // Check duplicates
-    if (this.players().some(p => p.name.toLowerCase() === name.toLowerCase())) {
+    const name = raw.toUpperCase();
+
+    // Check duplicates (stored names are uppercase)
+    if (this.players().some(p => p.name.toUpperCase() === name)) {
       this.errorMessage.set('¡Ya existe ese jugador!');
       setTimeout(() => this.errorMessage.set(''), 2000);
       return;
