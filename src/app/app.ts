@@ -138,6 +138,8 @@ export class App {
   hasRevealedSecretOnce = false;
   // Reveal countdown (seconds)
   revealCountdown = signal<number>(0);
+  // Rules modal
+  rulesModalOpen = signal<boolean>(false);
 
   // --- COMPUTED ---
   maxImpostors = computed(() => {
@@ -261,6 +263,14 @@ export class App {
     this.isRevealingSecret = false; // Reset state
     this.hasRevealedSecretOnce = false; // Reset lock
     this.isModalOpen = true;
+  }
+
+  openRules() {
+    this.rulesModalOpen.set(true);
+  }
+
+  closeRules() {
+    this.rulesModalOpen.set(false);
   }
 
   revealSecret() {

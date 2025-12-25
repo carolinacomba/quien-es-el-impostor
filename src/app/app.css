@@ -84,3 +84,10 @@
   transform: scale(1);
   animation: popIn 0.6s ease-out;
 }
+
+/* Rules modal styles */
+.rules-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
