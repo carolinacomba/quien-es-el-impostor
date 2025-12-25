@@ -227,7 +227,7 @@
           <div class="h-32"></div> 
         </div>
 
-        <button 
+        <button *ngIf="!isRevealingSecret"
           (click)="closeModal()"
           [disabled]="!hasRevealedSecretOnce"
           class="w-full py-3 rounded-xl font-bold border transition-all duration-300"
