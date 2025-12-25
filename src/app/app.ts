@@ -20,84 +20,90 @@ type Category = {
 
 // Base de datos de palabras
 const WORD_DB: Category[] = [
-  { 
-    name: 'Comida', 
+  {
+    name: 'Comida',
     words: [
       // Clásicos Arg
-      'Asado', 'Milanesa', 'Choripán', 'Empanadas', 'Mate y facturas', 'Dulce de Leche', 
+      'Asado', 'Milanesa', 'Choripán', 'Empanadas', 'Mate y facturas', 'Dulce de Leche',
       'Fernet con Coca', 'Polenta', 'Locro', 'Alfajor de Maicena', 'Pastel de Papa',
       'Torta Frita', 'Chipá', 'Mantecol', 'Vitel Toné', 'Flan', 'Arroz con leche',
       // Toque Cordobés
       'Lomito', 'Vino con pritty', 'Criollitos', 'Salame',
       // General
       'Pizza', 'Hamburguesa', 'Sushi', 'Pochoclos', 'Helado'
-    ] 
+    ]
   },
-  { 
-    name: 'Lugares', 
+  {
+    name: 'Lugares',
     words: [
       // Buenos Aires / Nacional
-      'El Obelisco', 'La Bombonera', 'Mar del Plata', 'Bariloche', 'La Costanera', 
+      'El Obelisco', 'La Bombonera', 'Mar del Plata', 'Bariloche', 'La Costanera',
       'Cataratas del Iguazú', 'La Patagonia', 'Ushuaia',
       // Córdoba
-      'El Kempes', 'Villa Carlos Paz', 'Las Sierras', 'El Buen Pastor', 'Patio Olmos', 'La Cañada', 
+      'El Kempes', 'Villa Carlos Paz', 'Las Sierras', 'El Buen Pastor', 'Patio Olmos', 'La Cañada',
       'Cerro Uritorco', 'Cosquín', 'Festival de Jesús María', 'Nueva Córdoba',
       // General / Abstracto
-      'Kiosco 24hs', 'Supermercado chino', 'Comisaría', 'Hospital', 'Cementerio', 
+      'Kiosco 24hs', 'Supermercado chino', 'Comisaría', 'Hospital', 'Cementerio',
       'Gimnasio', 'Desierto', 'La Luna', 'Escuela', 'Cárcel'
-    ] 
+    ]
   },
-  { 
-    name: 'Objetos', 
+  {
+    name: 'Objetos',
     words: [
       // Cotidiano Arg
-      'Tarjeta Sube', 'Termo Stanley', 'Parrilla', 'Bidet', 'Ojotas', 'Repasador', 'Cacerola', 
+      'Tarjeta Sube', 'Termo Stanley', 'Parrilla', 'Bidet', 'Ojotas', 'Repasador', 'Cacerola',
       'Bombilla tapada', 'Control Remoto', 'Celular', 'DNI', 'Carnet de conducir',
       // Joda / Varios
       'Vaso viajero (botella cortada)', 'Conservadora', 'Reposera', 'Guitarra criolla', 'Pelota de fútbol',
       // General
       'Microondas', 'Ventilador de pie', 'Aire Acondicionado', 'Billetera vacía',
       'Papel Higiénico', 'Espejo', 'Sartén', 'Inodoro'
-    ] 
+    ]
   },
-  { 
-    name: 'Personajes', 
+  {
+    name: 'Personajes',
     words: [
       // Ídolos
       'Messi', 'Maradona', 'El Papa Francisco', 'El Dibu Martínez', 'Julián Álvarez', 'Manu Ginóbili',
-      'Susana Giménez', 'Ricardo Darín', 'Mirtha Legrand', 'Moria Casán', 'Guillermo Francella', 
+      'Susana Giménez', 'Ricardo Darín', 'Mirtha Legrand', 'Moria Casán', 'Guillermo Francella',
       'Bizarrap', 'Lali Espósito', 'Wanda Nara', 'Marcelo Tinelli', 'Milei', 'Taylor Swift', 'Bad Bunny',
       'Cristina Fernández de Kirchner', 'Alberto Fernández', 'Lionel Scaloni', 'Justin Bieber',
       'Liam Payne',
       // Córdoba
       'La Mona Jiménez', 'El Potro Rodrigo', 'Piñón Fijo', 'Paulo Londra',
       // Ficción / Mundial
-      'El Chavo del 8', 'Harry Potter', 'Batman', 'Spiderman', 'Papa Noel', 'Mickey Mouse', 'Shrek'
-    ] 
+      'El Chavo del 8', 'Batman', 'Spiderman', 'Papa Noel', 'Mickey Mouse', 'Shrek'
+    ]
   },
-  { 
-    name: 'Animales', 
+  {
+    name: 'Animales',
     words: [
       // Autóctonos / Comunes
-      'Hornero', 'Carpincho', 'Perro Callejero', 'Mosquito', 'Vaca', 'Gato', 'Paloma', 
+      'Hornero', 'Carpincho', 'Perro Callejero', 'Mosquito', 'Vaca', 'Gato', 'Paloma',
       'Cucaracha', 'Puma', 'Yaguareté', 'Cóndor', 'Llama', 'Alacrán',
       // General
       'León', 'Elefante', 'Tiburón', 'Pingüino', 'Dinosaurio', 'Unicornio', 'Mono', 'Rata'
-    ] 
+    ]
   },
-  { 
-    name: 'Situaciones', 
+  {
+    name: 'Situaciones',
     words: [
-      // Bien Argentas
-      'Joda Clandestina', 'Cacerolazo', 'Hacer fila', 
-      'Bondi lleno', 'Día de lluvia y tortas fritas', 'Domingo de asado', 'La Previa', 'Boliche', 
+      'Joda Clandestina', 'Cacerolazo', 'Hacer fila',
+      'Bondi lleno', 'Día de lluvia y tortas fritas', 'Domingo de asado', 'La Previa', 'Boliche',
       'Final del Mundial 2022', 'Estar sin luz', 'Quedarse sin internet',
-      // Córdoba
       'Baile de la Mona',
       // Eventos / General
       'Fiestas de fin de año', 'Casamiento', 'Velorio', 'Egresados en Bariloche',
       'Examen final', 'Primera cita', 'Entrevista de trabajo', 'Película de terror'
-    ] 
+    ]
+  },
+  {
+    name: 'Películas',
+    words: [
+      'Titanic', 'Harry Potter', 'Up', 'Toy Story', 'Buscando a Nemo', 
+      'El Padrino', 'Star Wars', 'Avatar', 'El Rey León', 
+      'Peter Pan', 'Jurassic Park', 'Matrix', 'Una noche en el museo'
+    ]
   },
 ];
 
@@ -114,17 +120,17 @@ export class App {
   players = signal<Player[]>([]);
   impostorCount = signal<number>(1);
   showCategory = signal<boolean>(true);
-  
+
   // Game Logic State
   currentSecretWord = signal<string>('');
   currentCategory = signal<string>('');
   startingPlayerName = signal<string>('');
   roundDirection = signal<'Horario' | 'Antihorario'>('Horario');
-  
+
   // UI State
   newPlayerName = '';
   errorMessage = signal<string>('');
-  
+
   // Modal State
   isModalOpen = false;
   currentPlayerReviewing: Player | null = null;
@@ -162,7 +168,7 @@ export class App {
   addPlayer() {
     const name = this.newPlayerName.trim();
     if (!name) return;
-    
+
     // Check duplicates
     if (this.players().some(p => p.name.toLowerCase() === name.toLowerCase())) {
       this.errorMessage.set('¡Ya existe ese jugador!');
@@ -176,7 +182,7 @@ export class App {
       isImpostor: false,
       hasSeenRole: false
     }]);
-    
+
     this.newPlayerName = '';
     this.errorMessage.set('');
   }
@@ -211,7 +217,7 @@ export class App {
     const randomCatIndex = Math.floor(Math.random() * WORD_DB.length);
     const category = WORD_DB[randomCatIndex];
     const randomWordIndex = Math.floor(Math.random() * category.words.length);
-    
+
     this.currentCategory.set(category.name);
     this.currentSecretWord.set(category.words[randomWordIndex]);
 
@@ -225,7 +231,7 @@ export class App {
 
     // Shuffle simple
     const shuffled = currentPlayers.sort(() => 0.5 - Math.random());
-    
+
     // Marcar impostores
     for (let i = 0; i < this.impostorCount(); i++) {
       shuffled[i].isImpostor = true;
@@ -233,7 +239,7 @@ export class App {
 
     // Devolver ordenados por nombre para que sea más fácil encontrarse
     this.players.set(currentPlayers.sort((a, b) => a.name.localeCompare(b.name)));
-    
+
     // Track start of game (no secret word sent)
     this.trackEvent('start_game', {
       playerCount: this.players().length,
@@ -265,7 +271,7 @@ export class App {
   closeModal() {
     if (this.currentPlayerReviewing) {
       // Marcar como visto
-      this.players.update(list => list.map(p => 
+      this.players.update(list => list.map(p =>
         p.id === this.currentPlayerReviewing!.id ? { ...p, hasSeenRole: true } : p
       ));
     }
@@ -285,10 +291,10 @@ export class App {
     const allPlayers = this.players();
     const randomIndex = Math.floor(Math.random() * allPlayers.length);
     this.startingPlayerName.set(allPlayers[randomIndex].name);
-    
+
     // Elegir sentido
     this.roundDirection.set(Math.random() > 0.5 ? 'Horario' : 'Antihorario');
-    
+
     this.gameState.set('PLAYING');
   }
 
