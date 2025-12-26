@@ -24,13 +24,14 @@ const WORD_DB: Category[] = [
     name: 'Comida',
     words: [
       // Clásicos Arg
-      'Asado', 'Milanesa', 'Choripán', 'Empanadas', 'Mate y facturas', 'Dulce de Leche',
+      'Asado', 'Milanesa', 'Choripán', 'Empanadas', 'Mate dulce', 'Dulce de Leche',
       'Fernet con Coca', 'Polenta', 'Locro', 'Alfajor de Maicena', 'Pastel de Papa',
       'Torta Frita', 'Chipá', 'Mantecol', 'Vitel Toné', 'Flan', 'Arroz con leche',
       // Toque Cordobés
       'Lomito', 'Vino con pritty', 'Criollitos', 'Salame',
       // General
-      'Pizza', 'Hamburguesa', 'Sushi', 'Pochoclos', 'Helado', 'Tacos', 'Ensalada de frutas'
+      'Pizza', 'Hamburguesa', 'Sushi', 'Pochoclos', 'Helado', 'Tacos', 'Ensalada de frutas', 'Picada',
+      'Pizza fría del día anterior', 'Tostado de jamón y queso'
     ]
   },
   {
@@ -43,8 +44,8 @@ const WORD_DB: Category[] = [
       'El Kempes', 'Villa Carlos Paz', 'Las Sierras', 'El Buen Pastor', 'Patio Olmos', 'La Cañada',
       'Cerro Uritorco', 'Cosquín', 'Festival de Jesús María', 'Nueva Córdoba',
       // General / Abstracto
-      'Kiosco 24hs', 'Supermercado chino', 'Comisaría', 'Hospital', 'Cementerio',
-      'Gimnasio', 'Desierto', 'La Luna', 'Escuela', 'Cárcel'
+      'Kiosco', 'Supermercado chino', 'Comisaría', 'Hospital', 'Cementerio',
+      'Gimnasio', 'Desierto', 'La Luna', 'Escuela', 'Cárcel', 'Terminal de Ómnibus', 'Paseo de Artesanos'
     ]
   },
   {
@@ -102,7 +103,7 @@ const WORD_DB: Category[] = [
     words: [
       'Titanic', 'Harry Potter', 'Up', 'Toy Story', 'Buscando a Nemo', 
       'El Padrino', 'Star Wars', 'Avatar', 'El Rey León', 
-      'Peter Pan', 'Jurassic Park', 'Matrix', 'Una noche en el museo'
+      'Peter Pan', 'Jurassic Park', 'Matrix', 'Una noche en el museo', 'Rápido y Furioso'
     ]
   },
 ];
