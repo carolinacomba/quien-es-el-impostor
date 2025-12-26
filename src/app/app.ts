@@ -45,7 +45,7 @@ const WORD_DB: Category[] = [
       'Cerro Uritorco', 'Cosquín', 'Festival de Jesús María', 'Nueva Córdoba',
       // General / Abstracto
       'Kiosco', 'Supermercado chino', 'Comisaría', 'Hospital', 'Cementerio',
-      'Gimnasio', 'Desierto', 'La Luna', 'Escuela', 'Cárcel', 'Terminal de Ómnibus', 'Paseo de Artesanos', 'Quincho'
+      'Gimnasio', 'Desierto', 'Luna', 'Escuela', 'Cárcel', 'Terminal de Ómnibus', 'Paseo de Artesanos', 'Quincho'
     ]
   },
   {
