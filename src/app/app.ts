@@ -31,7 +31,7 @@ const WORD_DB: Category[] = [
       'Lomito', 'Vino con pritty', 'Criollitos', 'Salame',
       // General
       'Pizza', 'Hamburguesa', 'Sushi', 'Pochoclos', 'Helado', 'Tacos', 'Ensalada de frutas', 'Picada',
-      'Pizza fría del día anterior', 'Tostado de jamón y queso'
+      'Pizza fría del día anterior', 'Tostado de jamón y queso', 'Pasta Frola'
     ]
   },
   {
@@ -45,7 +45,7 @@ const WORD_DB: Category[] = [
       'Cerro Uritorco', 'Cosquín', 'Festival de Jesús María', 'Nueva Córdoba',
       // General / Abstracto
       'Kiosco', 'Supermercado chino', 'Comisaría', 'Hospital', 'Cementerio',
-      'Gimnasio', 'Desierto', 'La Luna', 'Escuela', 'Cárcel', 'Terminal de Ómnibus', 'Paseo de Artesanos'
+      'Gimnasio', 'Desierto', 'La Luna', 'Escuela', 'Cárcel', 'Terminal de Ómnibus', 'Paseo de Artesanos', 'Quincho'
     ]
   },
   {
