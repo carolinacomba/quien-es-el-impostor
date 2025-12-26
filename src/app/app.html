@@ -1,15 +1,10 @@
 <div class="min-h-screen bg-slate-900 text-slate-100 font-sans selection:bg-pink-500 selection:text-white pb-10">
   
   <!-- HEADER -->
-  <header class="p-6 text-center border-b border-slate-800 bg-slate-950/50 backdrop-blur-md sticky top-0 z-10 shadow-lg shadow-purple-900/10">
+  <header class="relative p-6 text-center border-b border-slate-800 bg-slate-950/50 backdrop-blur-md sticky top-0 z-10 shadow-lg shadow-purple-900/10">
         <h1 class="text-4xl font-black tracking-tighter bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent drop-shadow-sm uppercase italic">
           Quién es el Chanta
         </h1>
-        <button (click)="openRules()" aria-label="Reglas" class="absolute top-4 right-4 p-2 rounded-full bg-cyan-600 hover:bg-cyan-500 text-white shadow-md focus:outline-none">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.5a.75.75 0 10-1.5 0v1a.75.75 0 001.5 0v-1zM9.25 9.5a.75.75 0 011.5 0v5a.75.75 0 01-1.5 0v-5z" clip-rule="evenodd" />
-          </svg>
-        </button>
   </header>
 
   <main class="max-w-md mx-auto p-4 mt-4">
@@ -17,10 +12,15 @@
     <!-- VISTA 1: CONFIGURACIÓN (SETUP) -->
     <div *ngIf="gameState() === 'SETUP'" class="animate-fade-in space-y-6">
       
-      <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 shadow-xl backdrop-blur-sm">
+      <div class="bg-slate-800/50 relative p-6 rounded-2xl border border-slate-700 shadow-xl backdrop-blur-sm">
         <h2 class="text-xl font-bold mb-4 text-cyan-400 flex items-center gap-2">
           <span class="text-2xl">⚙️</span> Configuración
         </h2>
+        <button (click)="openRules()" aria-label="Reglas" class="absolute top-3 right-3 p-2 rounded-full bg-cyan-600 hover:bg-cyan-500 text-white shadow-md focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.5a.75.75 0 10-1.5 0v1a.75.75 0 001.5 0v-1zM9.25 9.5a.75.75 0 011.5 0v5a.75.75 0 01-1.5 0v-5z" clip-rule="evenodd" />
+          </svg>
+        </button>
 
         <!-- Input Jugadores -->
         <div class="space-y-4">

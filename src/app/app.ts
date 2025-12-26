@@ -30,7 +30,7 @@ const WORD_DB: Category[] = [
       // Toque Cordobés
       'Lomito', 'Vino con pritty', 'Criollitos', 'Salame',
       // General
-      'Pizza', 'Hamburguesa', 'Sushi', 'Pochoclos', 'Helado'
+      'Pizza', 'Hamburguesa', 'Sushi', 'Pochoclos', 'Helado', 'Tacos', 'Ensalada de frutas'
     ]
   },
   {
