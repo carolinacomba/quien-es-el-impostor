@@ -215,10 +215,10 @@
       <div class="text-center space-y-6">
         <h3 class="text-2xl font-bold text-white">Hola, <span class="text-cyan-400">{{ currentPlayerReviewing?.name }}</span></h3>
         
-        <div class="py-8 relative group cursor-pointer" (mousedown)="revealSecret()" (touchstart)="revealSecret()" (mouseup)="hideSecret()" (touchend)="hideSecret()" (mouseleave)="hideSecret()">
+        <div class="relative group cursor-pointer" (mousedown)="revealSecret()" (touchstart)="revealSecret()" (mouseup)="hideSecret()" (touchend)="hideSecret()" (mouseleave)="hideSecret()">
           
           <!-- Estado Oculto -->
-          <div *ngIf="!isRevealingSecret" class="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-200">
+          <div *ngIf="!isRevealingSecret" class="flex flex-col items-center justify-center transition-opacity duration-200 py-8">
             <div class="w-20 h-20 rounded-full bg-slate-800 flex items-center justify-center mb-4 border border-slate-600 group-hover:border-cyan-500 group-hover:scale-110 transition-all">
               <span class="text-4xl">👁️</span>
             </div>
@@ -227,21 +227,18 @@
           </div>
 
           <!-- Estado Revelado -->
-          <div *ngIf="isRevealingSecret" class="animate-zoom-in">
+          <div *ngIf="isRevealingSecret" class="animate-zoom-in py-8">
             <ng-container *ngIf="currentPlayerReviewing?.isImpostor; else innocentView">
               <p class="text-slate-400 text-xs font-bold uppercase mb-1" *ngIf="showCategory()">Categoría: {{ currentCategory() }}</p>
               <h2 class="text-3xl font-black text-red-500 mb-2 glitch-text">¡SOS EL IMPOSTOR!</h2>
               <p class="text-slate-300 text-sm">Disimulá, escuchá y mentí.</p>
             </ng-container>
             <ng-template #innocentView>
-              <p class="text-slate-400 text-xs font-bold uppercase mb-1" *ngIf="showCategory()">Categoría: {{ currentCategory() }}</p>
-              <h2 class="text-4xl font-black text-white mb-2 break-words">{{ currentSecretWord() }}</h2>
+              <p class="text-slate-400 text-xs font-bold uppercase mb-6" *ngIf="showCategory()">Categoría: {{ currentCategory() }}</p>
+              <h2 class="text-5xl font-black text-white mb-3 break-words min-h-24 flex items-center justify-center">{{ currentSecretWord() }}</h2>
               <p class="text-slate-500 text-xs">No digas la palabra, describila sutilmente.</p>
             </ng-template>
           </div>
-
-          <!-- Spacer para mantener altura -->
-          <div class="h-32"></div> 
         </div>
 
         <button *ngIf="!isRevealingSecret"
