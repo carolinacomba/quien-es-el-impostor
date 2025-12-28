@@ -283,15 +283,62 @@
 
   <!-- MODAL REGLAS -->
   <div *ngIf="rulesModalOpen()" class="fixed inset-0 z-60 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-    <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 shadow-2xl relative">
+    <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
       <button (click)="closeRules()" class="absolute top-4 right-4 text-slate-400 hover:text-white">✕</button>
-      <h2 class="text-2xl font-bold text-white mb-3">Reglas rápidas</h2>
-      <ul class="text-slate-300 list-disc list-inside space-y-2">
-        <li>Agregá al menos 3 jugadores y seleccioná la cantidad de impostores.</li>
-        <li>Cada jugador toca su nombre para ver su rol en secreto. Mantené apretado el ojo para mostrar la palabra.</li>
-        <li>Si sos impostor, sabrás que sos impostor; si no, verás la palabra secreta que no debés decir.</li>
-        <li>Al terminar, podés ver quiénes eran los impostores y reiniciar para jugar otra ronda.</li>
-      </ul>
+      <h2 class="text-2xl font-bold text-white mb-6">Reglas del juego</h2>
+      
+      <!-- Objetivo del juego -->
+      <div class="mb-8">
+        <h3 class="text-lg font-bold text-cyan-400 mb-3 flex items-center gap-2">
+          <span>🎮</span> Objetivo
+        </h3>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          Los jugadores deben descubrir quién es el impostor sin revelar la palabra secreta. El impostor debe disimular sin conocer la palabra.
+        </p>
+      </div>
+
+      <!-- Cómo jugar -->
+      <div class="mb-8">
+        <h3 class="text-lg font-bold text-cyan-400 mb-3 flex items-center gap-2">
+          <span>📋</span> Cómo jugar
+        </h3>
+        <ol class="text-slate-300 text-sm space-y-2">
+          <li class="flex gap-3"><span class="font-bold text-pink-400 min-w-fit">1.</span> <span>Agregar al menos 3 jugadores.</span></li>
+          <li class="flex gap-3"><span class="font-bold text-pink-400 min-w-fit">2.</span> <span>Cada jugador toca su nombre para ver su rol en secreto.</span></li>
+          <li class="flex gap-3"><span class="font-bold text-pink-400 min-w-fit">3.</span> <span>Mantén apretado el ojo para revelar la palabra secreta.</span></li>
+          <li class="flex gap-3"><span class="font-bold text-pink-400 min-w-fit">4.</span> <span>Describe la palabra sin decirla directamente.</span></li>
+          <li class="flex gap-3"><span class="font-bold text-pink-400 min-w-fit">5.</span> <span>Al terminar, se revelan los impostores.</span></li>
+        </ol>
+      </div>
+
+      <!-- Opciones de configuración -->
+      <div class="mb-8">
+        <h3 class="text-lg font-bold text-purple-400 mb-3 flex items-center gap-2">
+          <span>⚙️</span> Opciones
+        </h3>
+        <div class="space-y-4">
+          <!-- Mostrar Categoría -->
+          <div class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+            <p class="font-semibold text-slate-200 mb-1 flex items-center gap-2">
+              <span>📂</span> Mostrar categoría de la palabra
+            </p>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Si está habilitado, todos verán la categoría (ej: Películas, Lugares, Animales). Útil como ayuda extra.
+            </p>
+          </div>
+          
+          <!-- Impostores ven compañeros -->
+          <div class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+            <p class="font-semibold text-slate-200 mb-1 flex items-center gap-2">
+              <span>👺</span> Impostores ven a sus compañeros
+            </p>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Solo disponible con 2 o más impostores. Si está habilitado, cada impostor verá quiénes son los otros impostores.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div class="mt-6 text-right">
         <button (click)="closeRules()" class="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg font-bold">Entendido</button>
       </div>
