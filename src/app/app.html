@@ -92,6 +92,14 @@
           </div>
         </div>
 
+        <!-- Toggle Pista para Impostores -->
+        <div class="flex items-center justify-between p-3 bg-amber-900/30 rounded-xl border border-amber-700/50 cursor-pointer" (click)="toggleImpostorHint()">
+          <span class="text-sm font-bold text-amber-300">Dar pista al impostor</span>
+          <div class="w-12 h-6 rounded-full p-1 transition-colors duration-300 relative" [ngClass]="showImpostorHint() ? 'bg-amber-500' : 'bg-slate-600'">
+            <div class="w-4 h-4 bg-white rounded-full shadow-md transform transition-transform duration-300" [ngClass]="showImpostorHint() ? 'translate-x-6' : 'translate-x-0'"></div>
+          </div>
+        </div>
+
       </div>
 
       <!-- Botón Iniciar -->
@@ -245,6 +253,12 @@
               </div>
               <p class="text-slate-300 text-sm mt-4">Disimulá, escuchá y mentí.</p>
 
+              <!-- Mostrar pista si está habilitada -->
+              <div *ngIf="showImpostorHint() && currentImpostorHint()" class="mt-6 p-4 bg-amber-900/30 border border-amber-700/50 rounded-lg w-full">
+                <p class="text-amber-400 text-xs font-bold uppercase mb-2">💡 Pista:</p>
+                <p class="text-amber-100 text-sm font-semibold">{{ currentImpostorHint() }}</p>
+              </div>
+
               <!-- Mostrar compañeros impostores si es múltiple y está habilitado -->
               <div *ngIf="showMultipleImpostors() && impostorsList().length > 1" class="mt-8 pt-6 border-t border-slate-700 w-full">
                 <p class="text-purple-400 text-xs font-bold uppercase mb-3">Tus compañeros impostores:</p>
@@ -334,6 +348,16 @@
             </p>
             <p class="text-slate-400 text-xs leading-relaxed">
               Solo disponible con 2 o más impostores. Si está habilitado, cada impostor verá quiénes son los otros impostores.
+            </p>
+          </div>
+
+          <!-- Pista para Impostores -->
+          <div class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+            <p class="font-semibold text-slate-200 mb-1 flex items-center gap-2">
+              <span>💡</span> Dar pista al impostor
+            </p>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Si está habilitado, el impostor recibirá una pista que lo ayude a identificar la palabra sin ser obvia (ej: cantidad de letras, número de palabras, etc).
             </p>
           </div>
         </div>

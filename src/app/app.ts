@@ -108,6 +108,10 @@ const WORD_DB: Category[] = [
   },
 ];
 
+// Mapa de pistas semánticas para palabras
+const HINTS_MAP: Record<string, string[]> = {
+};
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -122,10 +126,12 @@ export class App {
   impostorCount = signal<number>(1);
   showCategory = signal<boolean>(true);
   showMultipleImpostors = signal<boolean>(false);
+  showImpostorHint = signal<boolean>(false);
 
   // Game Logic State
   currentSecretWord = signal<string>('');
   currentCategory = signal<string>('');
+  currentImpostorHint = signal<string>('');
   startingPlayerName = signal<string>('');
   roundDirection = signal<'Horario' | 'Antihorario'>('Horario');
 
@@ -207,6 +213,10 @@ export class App {
     this.showMultipleImpostors.update(v => !v);
   }
 
+  toggleImpostorHint() {
+    this.showImpostorHint.update(v => !v);
+  }
+
   increaseImpostors() {
     if (this.impostorCount() < this.maxImpostors()) {
       this.impostorCount.update(v => v + 1);
@@ -232,6 +242,13 @@ export class App {
 
     this.currentCategory.set(category.name);
     this.currentSecretWord.set(category.words[randomWordIndex]);
+
+    // Generar pista si está habilitada
+    if (this.showImpostorHint()) {
+      this.generateImpostorHint(category.words[randomWordIndex]);
+    } else {
+      this.currentImpostorHint.set('');
+    }
 
     // 2. Asignar Roles
     const currentPlayers = [...this.players()];
@@ -357,6 +374,35 @@ export class App {
     }));
     this.players.set(resetPlayers);
     this.gameState.set('SETUP');
+  }
+
+  // --- Hint Generation ---
+  private generateImpostorHint(secretWord: string): void {
+    const hints = this.getHintsForWord(secretWord);
+    if (hints.length > 0) {
+      const randomHint = hints[Math.floor(Math.random() * hints.length)];
+      this.currentImpostorHint.set(randomHint);
+    } else {
+      this.currentImpostorHint.set('');
+    }
+  }
+
+  private getHintsForWord(word: string): string[] {
+    // Buscar pista exacta en el mapa
+    if (HINTS_MAP[word]) {
+      return HINTS_MAP[word];
+    }
+
+    // Si no hay pista exacta, intentar buscar por palabras clave
+    const lowerWord = word.toLowerCase();
+    for (const [key, hints] of Object.entries(HINTS_MAP)) {
+      if (key.toLowerCase() === lowerWord) {
+        return hints;
+      }
+    }
+
+    // Si no hay pista, retornar array vacío
+    return [];
   }
 
   // --- Analytics helper ---
