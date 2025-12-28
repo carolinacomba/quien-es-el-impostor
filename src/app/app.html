@@ -36,6 +36,11 @@
               />
               <button (click)="addPlayer()" class="bg-cyan-600 hover:bg-cyan-500 text-white rounded-xl px-4 transition-colors font-bold text-xl">+</button>
             </div>
+
+            <!-- Mensaje de Error -->
+            <p *ngIf="errorMessage()" class="text-red-400 text-center text-sm font-semibold animate-pulse mt-2">
+              {{ errorMessage() }}
+            </p>
           </div>
 
           <!-- Lista Jugadores -->
@@ -79,6 +84,14 @@
           </div>
         </div>
 
+        <!-- Toggle Múltiples Impostores ven a sus compañeros -->
+        <div *ngIf="impostorCount() >= 2" class="flex items-center justify-between p-3 bg-purple-900/30 rounded-xl border border-purple-700/50 cursor-pointer" (click)="toggleMultipleImpostors()">
+          <span class="text-sm font-bold text-purple-300">Impostores ven a sus compañeros</span>
+          <div class="w-12 h-6 rounded-full p-1 transition-colors duration-300 relative" [ngClass]="showMultipleImpostors() ? 'bg-purple-500' : 'bg-slate-600'">
+            <div class="w-4 h-4 bg-white rounded-full shadow-md transform transition-transform duration-300" [ngClass]="showMultipleImpostors() ? 'translate-x-6' : 'translate-x-0'"></div>
+          </div>
+        </div>
+
       </div>
 
       <!-- Botón Iniciar -->
@@ -91,10 +104,6 @@
         <span class="relative z-10">Arrancar la Partida</span>
         <div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
       </button>
-      
-      <p *ngIf="errorMessage()" class="text-red-400 text-center text-sm font-semibold animate-pulse">
-        {{ errorMessage() }}
-      </p>
 
     </div>
 
@@ -235,6 +244,17 @@
                 <span class="text-4xl">👁️</span>
               </div>
               <p class="text-slate-300 text-sm mt-4">Disimulá, escuchá y mentí.</p>
+
+              <!-- Mostrar compañeros impostores si es múltiple y está habilitado -->
+              <div *ngIf="showMultipleImpostors() && impostorsList().length > 1" class="mt-8 pt-6 border-t border-slate-700 w-full">
+                <p class="text-purple-400 text-xs font-bold uppercase mb-3">Tus compañeros impostores:</p>
+                <div class="space-y-2">
+                  <div *ngFor="let impostor of impostorsList()" [ngClass]="impostor.id === currentPlayerReviewing?.id ? 'hidden' : 'block'" class="bg-purple-900/30 border border-purple-700/50 rounded-lg px-3 py-2 text-white font-semibold text-sm flex items-center gap-2">
+                    <span>👺</span> {{ impostor.name }}
+                  </div>
+                  <p *ngIf="impostorsList().length === 1" class="text-slate-500 text-xs italic">Solo el impostor eres vos.</p>
+                </div>
+              </div>
             </ng-container>
             <ng-template #innocentView>
               <p class="text-slate-400 text-xs font-bold uppercase mb-4" *ngIf="showCategory()">Categoría: {{ currentCategory() }}</p>
