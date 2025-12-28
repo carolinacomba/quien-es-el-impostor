@@ -121,6 +121,7 @@ export class App {
   players = signal<Player[]>([]);
   impostorCount = signal<number>(1);
   showCategory = signal<boolean>(true);
+  showMultipleImpostors = signal<boolean>(false);
 
   // Game Logic State
   currentSecretWord = signal<string>('');
@@ -200,6 +201,10 @@ export class App {
 
   toggleCategory() {
     this.showCategory.update(v => !v);
+  }
+
+  toggleMultipleImpostors() {
+    this.showMultipleImpostors.update(v => !v);
   }
 
   increaseImpostors() {
