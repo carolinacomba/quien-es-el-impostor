@@ -68,10 +68,7 @@ const HINTS_MAP: Record<string, string[]> = {
   'Paseo de Artesanos': ['Puestos', 'Manual', 'Regalos', 'Caminata', 'Feria'],
   'Quincho': ['Reunión', 'Parrilla', 'Encuentro', 'Comida', 'Grupo'],
 
-
-  // ======================
 // 🧱 OBJETOS
-// ======================
 'Tarjeta Sube': ['Transporte', 'Saldo', 'Viaje corto', 'Bolsillo', 'Lectora'],
 'Termo Stanley': ['Metal', 'Temperatura', 'Duración', 'Exterior', 'Mano'],
 'Parrilla': ['Calor', 'Hierro', 'Exterior', 'Reunión', 'Cocción'],
