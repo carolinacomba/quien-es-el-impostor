@@ -53,11 +53,11 @@ const WORD_DB: Category[] = [
     words: [
       // Cotidiano Arg
       'Tarjeta Sube', 'Termo Stanley', 'Parrilla', 'Bidet', 'Ojotas', 'Repasador', 'Cacerola',
-      'Bombilla tapada', 'Control Remoto', 'Celular', 'DNI', 'Carnet de conducir',
+      'Control Remoto', 'Celular', 'DNI', 'Carnet de conducir',
       // Joda / Varios
       'Vaso viajero (botella cortada)', 'Conservadora', 'Reposera', 'Guitarra criolla', 'Pelota de fútbol',
       // General
-      'Microondas', 'Ventilador de pie', 'Aire Acondicionado', 'Billetera vacía',
+      'Microondas', 'Ventilador de pie', 'Aire Acondicionado',
       'Papel Higiénico', 'Espejo', 'Sartén', 'Inodoro'
     ]
   },
@@ -80,7 +80,7 @@ const WORD_DB: Category[] = [
     name: 'Animales',
     words: [
       // Autóctonos / Comunes
-      'Hornero', 'Carpincho', 'Perro Callejero', 'Mosquito', 'Vaca', 'Gato', 'Paloma',
+      'Hornero', 'Carpincho', 'Mosquito', 'Vaca', 'Gato', 'Paloma',
       'Cucaracha', 'Puma', 'Yaguareté', 'Cóndor', 'Llama', 'Alacrán',
       // General
       'León', 'Elefante', 'Tiburón', 'Pingüino', 'Dinosaurio', 'Unicornio', 'Mono', 'Rata'
@@ -101,12 +101,206 @@ const WORD_DB: Category[] = [
   {
     name: 'Películas',
     words: [
-      'Titanic', 'Harry Potter', 'Up', 'Toy Story', 'Buscando a Nemo', 
-      'El Padrino', 'Star Wars', 'Avatar', 'El Rey León', 
+      'Titanic', 'Harry Potter', 'Up', 'Toy Story', 'Buscando a Nemo',
+      'El Padrino', 'Star Wars', 'Avatar', 'El Rey León',
       'Peter Pan', 'Jurassic Park', 'Matrix', 'Una noche en el museo', 'Rápido y Furioso'
     ]
   },
 ];
+
+// Mapa de pistas semánticas para palabras
+const HINTS_MAP: Record<string, string[]> = {
+
+  // --- COMIDA ---
+  'Asado': ['Domingo', 'Reunión', 'Humo', 'Juntada'],
+  'Milanesa': ['Rallado', 'Huevo', 'Clásico'],
+  'Choripán': ['Puesto', 'Mariposa', 'Paso'],
+  'Empanadas': ['Carne', 'Tradición', 'Entrada'],
+  'Mate dulce': ['Ronda', 'Desayuno', 'Controversial'],
+  'Dulce de Leche': ['Cuchara', 'Untable', 'Postre', 'Clásico', 'Tostada'],
+  'Fernet con Coca': ['Baile', 'Noche', 'Medida', 'Hielo'],
+  'Polenta': ['Invierno', 'Queso', 'Textura', 'Olla', 'Salsa'],
+  'Locro': ['Patrio', 'Espeso', 'Pesado', 'Olla'],
+  'Alfajor de Maicena': ['Coco', 'Tarde', 'Sequedad', 'Dulce'],
+  'Pastel de Papa': ['Capas', 'Carne', 'Invierno', 'Horno'],
+  'Torta Frita': ['Lluvia', 'Mate', 'Tarde', 'Tradición'],
+  'Chipá': ['Queso', 'Caliente', 'Bolita', 'Desayuno'],
+  'Mantecol': ['Maní', 'Mesa', 'Brindis', 'Postre'],
+  'Vitel Toné': ['Atún', 'Frío', 'Sobras', 'Fin de Año'],
+  'Flan': ['Huevos', 'Caramelo', 'Mixto', 'Molde', 'Casero'],
+  'Arroz con leche': ['Canela', 'Postre', 'Infancia', 'Cremoso'],
+  'Lomito': ['Completo', 'Pan', 'Gigante', 'Córdoba', 'Papas'],
+  'Vino con pritty': ['Mezcla', 'Gaseosa', 'Hielo', 'Barato', 'Verano'],
+  'Criollitos': ['Cuadrado', 'Mate', 'Merienda'],
+  'Salame': ['Picada', 'Tabla', 'Pan'],
+  'Pizza': ['Delivery', 'Caja', 'Reunión'],
+  'Hamburguesa': ['Pan', 'Rápido', 'Completa'],
+  'Sushi': ['Arroz', 'Bocados', 'Frío'],
+  'Pochoclos': ['Sonido', 'Bolsa', 'Gaseosa'],
+  'Helado': ['Verano', 'Frío', 'Sabores', 'Postre'],
+  'Tacos': ['Manos', 'Relleno', 'Carne', 'Condimentos'],
+  'Ensalada de frutas': ['Jugo', 'Mezcla', 'Postre', 'Colores'],
+  'Picada': ['Tabla', 'Queso', 'Compartir', 'Previa', 'Cerveza'],
+  'Pizza fría del día anterior': ['Desayuno', 'Bajón', 'Sobras', 'Heladera', 'Ayer'],
+  'Tostado de jamón y queso': ['Triángulo', 'Bar', 'Caliente', 'Plancha'],
+  'Pasta Frola': ['Rejilla', 'Tarde', 'Casero'],
+
+  // --- LUGARES ---
+  'El Obelisco': ['Corrientes', 'Punta', 'Festejo', 'Tránsito', 'Fotos'],
+  'La Bombonera': ['Oro', 'Barrio', 'Pasión', 'Late'],
+  'Mar del Plata': ['Lobos', 'Casino', 'Alfajor', 'Verano'],
+  'Bariloche': ['Nieve', 'Chocolate', 'Frío'],
+  'La Costanera': ['Río', 'Carrito', 'Caminata', 'Pesca', 'Noche'],
+  'Cataratas del Iguazú': ['Agua', 'Garganta', 'Caída', 'Mojado'],
+  'La Patagonia': ['Sur', 'Viento', 'Frío', 'Inmensidad'],
+  'Ushuaia': ['Extremo', 'Nieve', 'Frío', 'Canal'],
+  'El Kempes': ['Recitales', 'Multitud', 'Festejos'],
+  'Villa Carlos Paz': ['Reloj', 'Actores'],
+  'Las Sierras': ['Montaña', 'Río', 'Aire', 'Córdoba', 'Caminata'],
+  'El Buen Pastor': ['Aguas', 'Fuente', 'Capuchinos', 'Nueva Córdoba', 'Paseo'],
+  'Patio Olmos': ['Shopping', 'Fuente', 'Centro', 'Encuentro', 'Cine'],
+  'La Cañada': ['Piedra', 'Arroyo', 'Tipas', 'Centro'],
+  'Cerro Uritorco': ['Subida', 'Capilla', 'Energía', 'Caminata', 'Alto'],
+  'Cosquín': ['Música', 'Enero', 'Evento'],
+  'Festival de Jesús María': ['Tradición', 'Enero', 'Música'],
+  'Nueva Córdoba': ['Jóvenes', 'Bares', 'Edificios', 'Universidad', 'Joda'],
+  'Kiosco': ['Esquina', 'Ventanita', 'Paso', 'Compras'],
+  'Supermercado chino': ['Góndola', 'Caja', 'Barrio', 'Compras', 'Efectivo'],
+  'Comisaría': ['Autoridad', 'Azul', 'Uniforme', 'Seguridad'],
+  'Hospital': ['Pasillos', 'Guardia', 'Espera'],
+  'Cementerio': ['Visita', 'Silencio', 'Historia'],
+  'Gimnasio': ['Horario', 'Espejo', 'Rutina'],
+  'Desierto': ['Sol', 'Nada', 'Calor'],
+  'Luna': ['Noche', 'Blanco', 'Espacio', 'Fases'],
+  'Escuela': ['Rutina', 'Horario'],
+  'Cárcel': ['Control', 'Encierro', 'Tiempo', 'Muro', 'Seguridad'],
+  'Terminal de Ómnibus': ['Salida', 'Espera', 'Horarios'],
+  'Paseo de Artesanos': ['Feria', 'Manual', 'Regalos', 'Puestos', 'Caminata'],
+  'Quincho': ['Asador', 'Fondo', 'Juntada', 'Techo', 'Grupo'],
+
+  // --- OBJETOS ---
+  'Tarjeta Sube': ['Plástico', 'Carga', 'Viaje', 'Apoyar'],
+  'Termo Stanley': ['Verde', 'Mantener', 'Caro', 'Acero'],
+  'Parrilla': ['Hierro', 'Fuego', 'Humo'],
+  'Bidet': ['Baño', 'Agua', 'Argentino'],
+  'Ojotas': ['Verano', 'Goma', 'Playa', 'Comodidad'],
+  'Repasador': ['Cocina', 'Tela', 'Colgado', 'Mancha'],
+  'Cacerola': ['Manija', 'Cocina', 'Ruido', 'Comida'],
+  /* 'Bombilla tapada' removed */
+  'Control Remoto': ['Canal', 'Distancia'],
+  'Celular': ['Mano', 'Conexión'],
+  'DNI': ['Plástico', 'Foto', 'Número'],
+  'Carnet de conducir': ['Plástico', 'Control', 'Regla', 'Permiso'],
+  'Vaso viajero (botella cortada)': ['Plástico', 'Botella', 'Borde'],
+  'Conservadora': ['Hielo', 'Playa', 'Bebida', 'Frío', 'Caja'],
+  'Reposera': ['Playa', 'Exterior', 'Tela', 'Descanso'],
+  'Guitarra criolla': ['Madera', 'Fogón', 'Reunión', 'Manos'],
+  'Pelota de fútbol': ['Cuero', 'Equipo'],
+  'Microondas': ['Rápido', 'Cocina', 'Botones', 'Girar'],
+  'Ventilador de pie': ['Aire', 'Girar', 'Verano', 'Ruido'],
+  'Aire Acondicionado': ['Frío', 'Pared', 'Control', 'Verano', 'Ambiente'],
+  /* 'Billetera vacía' removed */
+  'Papel Higiénico': ['Diario', 'Suave'],
+  'Espejo': ['Vidrio', 'Imagen', 'Baño'],
+  'Sartén': ['Superficie', 'Cocina'],
+  'Inodoro': ['Diario', 'Sentarse', 'Botón'],
+
+  // --- PERSONAJES ---
+  'Messi': ['Cabra', 'Ídolo'],
+  'Maradona': ['Mano', 'Eterno', 'Historia'],
+  'El Papa Francisco': ['Blanco', 'Historia', 'Argentino'],
+  'El Dibu Martínez': ['Confianza', 'Baile', 'Loco'],
+  'Julián Álvarez': ['Pueblo'],
+  'Manu Ginóbili': ['Bahía'],
+  'Susana Giménez': ['Teléfono', 'Diva', 'Dinosaurio'],
+  'Ricardo Darín': ['Cine', 'Secreto', 'Premios'],
+  'Mirtha Legrand': ['Mesa', 'Joyas', 'Eterna'],
+  'Moria Casán': ['Frases', 'Teatro', 'One', 'Jurado'],
+  'Guillermo Francella': ['Bigote', 'Comedia', 'Racing', 'Humor'],
+  'Bizarrap': ['Actualidad', 'Estudio', 'Sesión'],
+  'Lali Espósito': ['Pop', 'Esperanza', 'Casting'],
+  'Wanda Nara': ['Representante', 'Actualidad', 'Medios', 'Empresaria'],
+  'Marcelo Tinelli': ['Micrófono', 'Baile', 'Noche', 'América'],
+  'Milei': ['Peluca', 'Grito', 'Actualidad'],
+  'Taylor Swift': ['Eras', 'Éxito', 'Parejas', 'Pop'],
+  'Bad Bunny': ['Silla Plástica', 'Urbano', 'Actualidad'],
+  'Cristina Fernández de Kirchner': ['Debate', 'Discurso', 'Domicilio'],
+  'Alberto Fernández': ['Bigote', 'Polémica'],
+  'Lionel Scaloni': ['Equipo', 'Estrategia'],
+  'Justin Bieber': ['Hijo', 'Fama', 'Bebé'],
+  'Liam Payne': ['Banda', 'Palermo', 'Hotel', 'Dirección'],
+  'La Mona Jiménez': ['Rulos', 'Señas', 'Barrios'],
+  'El Potro Rodrigo': ['Azul', 'Cielo', 'Historia'],
+  'Piñón Fijo': ['Maquillaje', 'Bici', 'Chicos'],
+  'Paulo Londra': ['Trap', 'Olvidado', 'Basquet'],
+  'El Chavo del 8': ['Gorra', 'Pecas', 'Torta', 'Clásico'],
+  'Batman': ['Noche', 'Capa', 'Auto', 'Justicia'],
+  'Spiderman': ['Red', 'Edificio', 'Responsabilidad'],
+  'Papa Noel': ['Diciembre', 'Mentira', 'Niños'],
+  'Mickey Mouse': ['Orejas', 'Guantes', 'Herramienta'],
+  'Shrek': ['Animación', 'Verde', 'Pantano'],
+
+  // --- ANIMALES ---
+  'Hornero': ['Barro'],
+  'Carpincho': ['Roedor', 'Viral'],
+  /* 'Perro Callejero' removed */
+  'Mosquito': ['Verano', 'Noche', 'Pequeño'],
+  'Vaca': ['Blanco', 'Manchas', 'Cuero', 'Pasto'],
+  'Gato': ['Caja', 'Casa'],
+  'Paloma': ['Plaza', 'Sucio', 'Gris', 'Ciudad', 'Cuello'],
+  'Cucaracha': ['Miedo', 'Oscuridad'],
+  'Puma': ['Salvaje', 'Garra'],
+  'Yaguareté': ['Billete', 'Selva', 'Manchas'],
+  'Cóndor': ['Andes', 'Grande', 'Altura'],
+  'Llama': ['Norte', 'Lana', 'Montaña', 'Cuello'],
+  'Alacrán': ['Veneno', 'Cola', 'Miedo', 'Oscuro', 'Verano'],
+  'León': ['Manada', 'Sabana'],
+  'Elefante': ['Peso', 'Grande', 'Gris', 'Memoria'],
+  'Tiburón': ['Agua', 'Película', 'Miedo'],
+  'Pingüino': ['Frío', 'Negro', 'Blanco', 'Ave'],
+  'Dinosaurio': ['Huesos', 'Película'],
+  'Unicornio': ['Cuerno', 'Colores'],
+  'Mono': ['Selva', 'Agilidad'],
+  'Rata': ['Escondite', 'Peste', 'Ciudad'],
+
+  // --- SITUACIONES ---
+  'Joda Clandestina': ['Escondido', 'Noche', 'Prohibido'],
+  'Cacerolazo': ['Ruido', 'Queja'],
+  'Hacer fila': ['Parado', 'Tiempo', 'Turno'],
+  'Bondi lleno': ['Apretado', 'Boleto', 'Parado'],
+  'Día de lluvia y tortas fritas': ['Gris', 'Tradición', 'Casa'],
+  'Domingo de asado': ['Familia', 'Humo', 'Mediodía', 'Mesa', 'Carne'],
+  'La Previa': ['Alcohol', 'Música', 'Amigos', 'Casa'],
+  'Boliche': ['Noche', 'Gente', 'Entrada'],
+  'Final del Mundial 2022': ['Nervios', 'Diciembre', 'Historia'],
+  'Estar sin luz': ['Molestia', 'Oscuridad', 'Calor', 'Espera'],
+  'Quedarse sin internet': ['Desconexión', 'Frustración'],
+  'Baile de la Mona': ['Señas', 'Multitud', 'Vino'],
+  'Fiestas de fin de año': ['Comida', 'Ilusión', 'Familia', 'Cierre'],
+  'Casamiento': ['Arroz', 'Invitados'],
+  'Velorio': ['Silencio', 'Reunión'],
+  'Egresados en Bariloche': ['Hotel', 'Boliche', 'Nieve', 'Campera'],
+  'Examen final': ['Nervios', 'Mesa', 'Alivio'],
+  'Primera cita': ['Nervios', 'Conocer', 'Charla', 'Impresión'],
+  'Entrevista de trabajo': ['Preguntas', 'Nervios', 'Formal'],
+  'Película de terror': ['Miedo', 'Grito', 'Susto', 'Oscuro', 'Sangre'],
+
+  // --- PELÍCULAS ---
+  'Titanic': ['Hielo', 'Tabla'],
+  'Harry Potter': ['Aventura', 'Saga', 'Lentes'],
+  'Up': ['Recuerdos', 'Animación'],
+  'Toy Story': ['Amigo', 'Olvidados'],
+  'Buscando a Nemo': ['Hijo', 'Memoria'],
+  'El Padrino': ['Mafia', 'Familia', 'Traje'],
+  'Star Wars': ['Padre', 'Guerra'],
+  'Avatar': ['Azul', 'Planeta', 'Cultura'],
+  'El Rey León': ['Destino', 'Familia', ' Crecimiento'],
+  'Peter Pan': ['Volar', 'Sombra', 'Infancia'],
+  'Jurassic Park': ['Isla', 'Criaturas', 'Aventura'],
+  'Matrix': ['Despertar', 'Elección', 'Lentes', 'Realidad'],
+  'Una noche en el museo': ['Noche', 'Vida', 'Esqueleto', 'Guardia'],
+  'Rápido y Furioso': ['Saga', 'Familia', 'Acción']
+};
 
 @Component({
   selector: 'app-root',
@@ -122,10 +316,12 @@ export class App {
   impostorCount = signal<number>(1);
   showCategory = signal<boolean>(true);
   showMultipleImpostors = signal<boolean>(false);
+  showImpostorHint = signal<boolean>(false);
 
   // Game Logic State
   currentSecretWord = signal<string>('');
   currentCategory = signal<string>('');
+  currentImpostorHint = signal<string>('');
   startingPlayerName = signal<string>('');
   roundDirection = signal<'Horario' | 'Antihorario'>('Horario');
 
@@ -207,6 +403,10 @@ export class App {
     this.showMultipleImpostors.update(v => !v);
   }
 
+  toggleImpostorHint() {
+    this.showImpostorHint.update(v => !v);
+  }
+
   increaseImpostors() {
     if (this.impostorCount() < this.maxImpostors()) {
       this.impostorCount.update(v => v + 1);
@@ -232,6 +432,13 @@ export class App {
 
     this.currentCategory.set(category.name);
     this.currentSecretWord.set(category.words[randomWordIndex]);
+
+    // Generar pista si está habilitada
+    if (this.showImpostorHint()) {
+      this.generateImpostorHint(category.words[randomWordIndex]);
+    } else {
+      this.currentImpostorHint.set('');
+    }
 
     // 2. Asignar Roles
     const currentPlayers = [...this.players()];
@@ -357,6 +564,35 @@ export class App {
     }));
     this.players.set(resetPlayers);
     this.gameState.set('SETUP');
+  }
+
+  // --- Hint Generation ---
+  private generateImpostorHint(secretWord: string): void {
+    const hints = this.getHintsForWord(secretWord);
+    if (hints.length > 0) {
+      const randomHint = hints[Math.floor(Math.random() * hints.length)];
+      this.currentImpostorHint.set(randomHint);
+    } else {
+      this.currentImpostorHint.set('');
+    }
+  }
+
+  private getHintsForWord(word: string): string[] {
+    // Buscar pista exacta en el mapa
+    if (HINTS_MAP[word]) {
+      return HINTS_MAP[word];
+    }
+
+    // Si no hay pista exacta, intentar buscar por palabras clave
+    const lowerWord = word.toLowerCase();
+    for (const [key, hints] of Object.entries(HINTS_MAP)) {
+      if (key.toLowerCase() === lowerWord) {
+        return hints;
+      }
+    }
+
+    // Si no hay pista, retornar array vacío
+    return [];
   }
 
   // --- Analytics helper ---
