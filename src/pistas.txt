@@ -76,7 +76,7 @@ const HINTS_MAP: Record<string, string[]> = {
   'Ojotas': ['Verano', 'Goma', 'Playa', 'Comodidad'],
   'Repasador': ['Cocina', 'Tela', 'Colgado', 'Mancha'],
   'Cacerola': ['Manija', 'Cocina', 'Ruido', 'Comida'],
-  'Bombilla tapada': ['Succión', 'Bronca', 'Metal'],
+  /* 'Bombilla tapada' removed */
   'Control Remoto': ['Canal', 'Distancia'],
   'Celular': ['Mano', 'Conexión'],
   'DNI': ['Plástico', 'Foto', 'Número'],
@@ -89,7 +89,7 @@ const HINTS_MAP: Record<string, string[]> = {
   'Microondas': ['Rápido', 'Cocina', 'Botones', 'Girar'],
   'Ventilador de pie': ['Aire', 'Girar', 'Verano', 'Ruido'],
   'Aire Acondicionado': ['Frío', 'Pared', 'Control', 'Verano', 'Ambiente'],
-  'Billetera vacía': ['Cuero', 'Deuda', 'Pobreza'],
+  /* 'Billetera vacía' removed */
   'Papel Higiénico': ['Diario', 'Suave'],
   'Espejo': ['Vidrio', 'Imagen', 'Baño'],
   'Sartén': ['Superficie', 'Cocina'],
@@ -133,7 +133,7 @@ const HINTS_MAP: Record<string, string[]> = {
   // --- ANIMALES ---
   'Hornero': ['Barro'],
   'Carpincho': ['Roedor', 'Viral'],
-  'Perro Callejero': ['Pulgas'],
+  /* 'Perro Callejero' removed */
   'Mosquito': ['Verano', 'Noche', 'Pequeño'],
   'Vaca': ['Blanco', 'Manchas', 'Cuero', 'Pasto'],
   'Gato': ['Caja', 'Casa'],

@@ -53,11 +53,11 @@ const WORD_DB: Category[] = [
     words: [
       // Cotidiano Arg
       'Tarjeta Sube', 'Termo Stanley', 'Parrilla', 'Bidet', 'Ojotas', 'Repasador', 'Cacerola',
-      'Bombilla tapada', 'Control Remoto', 'Celular', 'DNI', 'Carnet de conducir',
+      'Control Remoto', 'Celular', 'DNI', 'Carnet de conducir',
       // Joda / Varios
       'Vaso viajero (botella cortada)', 'Conservadora', 'Reposera', 'Guitarra criolla', 'Pelota de fútbol',
       // General
-      'Microondas', 'Ventilador de pie', 'Aire Acondicionado', 'Billetera vacía',
+      'Microondas', 'Ventilador de pie', 'Aire Acondicionado',
       'Papel Higiénico', 'Espejo', 'Sartén', 'Inodoro'
     ]
   },
@@ -80,7 +80,7 @@ const WORD_DB: Category[] = [
     name: 'Animales',
     words: [
       // Autóctonos / Comunes
-      'Hornero', 'Carpincho', 'Perro Callejero', 'Mosquito', 'Vaca', 'Gato', 'Paloma',
+      'Hornero', 'Carpincho', 'Mosquito', 'Vaca', 'Gato', 'Paloma',
       'Cucaracha', 'Puma', 'Yaguareté', 'Cóndor', 'Llama', 'Alacrán',
       // General
       'León', 'Elefante', 'Tiburón', 'Pingüino', 'Dinosaurio', 'Unicornio', 'Mono', 'Rata'
